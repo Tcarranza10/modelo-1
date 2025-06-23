@@ -1,0 +1,26 @@
+{
+  "name": "modelo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:01": "cd 01 && nodemon --ignore *.json index.mjs",
+    "dev:02": "cd 02 && nodemon --ignore *.json index.mjs",
+    "dev:03": "cd 03 && nodemon --ignore *.json index.mjs",
+    "dev:04": "cd 04 && nodemon --ignore *.json index.mjs",
+    "dev:05": "cd 05 && nodemon --ignore *.json index.mjs",
+    "dev:06": "cd 05 && nodemon --ignore *.json index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
