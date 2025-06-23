@@ -1,11 +1,11 @@
 import express from 'express';
 
-const PUERTO = 0
+const PUERTO = 3000
 
 const app = express();
 app.listen(PUERTO);
 
-app.get('/productos', (req, res) => {
+app.post('/productos/destacados/:id', (req, res,) => {
     const datos = {
         productos: [
             { id: 1, nombre: 'Producto 1' },
@@ -13,13 +13,16 @@ app.get('/productos', (req, res) => {
             { id: 3, nombre: 'Producto 3' },
         ],
     };
+
+    const id =  parseInt(req.params.id)
     const productoEncontrado = datos.productos.find((producto) => {
-        return true
+        return true, producto.id === id;
     });
     if (!productoEncontrado) {
-        res.status(500).json();
+        res.status(404).json("El producto no existe");
     } else {
-        res.status(204).json();
+        res.status(200).json(productoEncontrado);
+        return productoEncontrado
     }
 });
 
