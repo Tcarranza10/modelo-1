@@ -2,6 +2,9 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import {
     autenticarUsuario,
+    verificarDatosUsuario,
+    crearCookie,
+    verificarCookie
 } from './funciones.mjs';
 
 import dotenv from 'dotenv';
@@ -31,10 +34,12 @@ app.get('/logout', (req, res) => {
 });
 
 // Ruta autenticacion
-app.post('/autenticacion', (req, res) => {
+app.post('/autenticacion',verificarDatosUsuario, async (req, res) => {
     try{
         const { nombre, pass } = req.body;
+        const usuarioVerificado = autenticarUsuario(nombre, pass, usuarios);
         if (usuarioVerificado) {
+            crearCookie(res)
             return res.redirect('/');
         }
         return res.sendStatus(401);
@@ -45,7 +50,7 @@ app.post('/autenticacion', (req, res) => {
 });
 
 // Front login
-app.use('/login', express.static('login'));
+app.use('/login',express.static('login'));
 
 // Front administracion
-app.use(express.static('admin'));
+app.use(verificarCookie,express.static('admin'));

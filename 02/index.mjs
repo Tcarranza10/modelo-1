@@ -16,7 +16,7 @@ app.post('/productos/destacados/:id', (req, res,) => {
 
     const id =  parseInt(req.params.id)
     const productoEncontrado = datos.productos.find((producto) => {
-        return true, producto.id === id;
+        return producto.id === id;
     });
     if (!productoEncontrado) {
         res.status(404).json("El producto no existe");

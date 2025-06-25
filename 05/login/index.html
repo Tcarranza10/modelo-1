@@ -82,10 +82,11 @@
                     const datos = { nombre, pass };
 
                     try {
-                        const resp = await fetch('/autenticar', {
+                        const resp = await fetch('/autenticacion', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(datos),
+                            credentials: 'include'
                         });
                         if (resp.status === 200) {
                             window.location.href = '/';

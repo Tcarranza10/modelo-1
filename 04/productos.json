@@ -3,5 +3,10 @@
     "nombre": "Producto 1",
     "marca": "Marca X",
     "precio": 20000
+  },
+  {
+    "nombre": "Monitor",
+    "marca": "de",
+    "precio": 0.03
   }
 ]
